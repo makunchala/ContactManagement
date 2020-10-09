@@ -1,0 +1,60 @@
+<form  (ngSubmit)="onSubmit(contactFrm)"  [formGroup]="contactFrm">  
+  <h2>{{data.modalTitle}}</h2>  
+    
+  <div>  
+      <mat-form-field appearance="outline">  
+      <mat-label>Name</mat-label>  
+      <input matInput placeholder="Name" formControlName="name">  
+      <!-- <mat-icon matSuffix>sentiment_very_satisfied</mat-icon> -->  
+      <!-- <mat-hint>Hint</mat-hint> -->  
+      <mat-error *ngIf="formErrors.name">  
+        {{ formErrors.name }}  
+      </mat-error>  
+    </mat-form-field>  
+  </div>  
+  <div>  
+      <mat-form-field appearance="outline">  
+        <mat-select placeholder="Select a Company" formControlName="company">  
+          <mat-option>-- None --</mat-option>  
+          <mat-option *ngFor="let Company  of Companys" [value]="company">  
+            {{ company }}  
+          </mat-option>  
+        </mat-select>  
+        <mat-error *ngIf="formErrors.company ">  
+          {{ formErrors.company }}  
+        </mat-error>  
+      </mat-form-field>  
+    </div> 
+    <div>  
+      <mat-form-field appearance="outline">  
+        <mat-label>Phone</mat-label>  
+        <input type="number" matInput placeholder="Phone Number" formControlName="phone">  
+        <mat-error *ngIf="formErrors.phone">  
+          {{ formErrors.phone }}  
+        </mat-error>  
+      </mat-form-field>          
+    </div>   
+  <div>  
+    <mat-form-field appearance="outline">  
+      <textarea matInput placeholder="Address..." formControlName="address"></textarea>  
+      <mat-error *ngIf="formErrors.address ">  
+        {{ formErrors.address }}  
+      </mat-error>  
+    </mat-form-field>  
+  </div>  
+  <div>  
+      <div>  
+          <mat-form-field appearance="outline">  
+            <input matInput [matDatepicker]="picker" placeholder="LastDate Contacted" formControlName="lastDateContacted">  
+            <mat-datepicker-toggle matSuffix [for]="picker"></mat-datepicker-toggle>  
+            <mat-datepicker #picker></mat-datepicker>  
+            
+          <mat-error *ngIf="formErrors.lastDateContacted ">  
+            {{ formErrors.lastDateContacted }}  
+          </mat-error>  
+          </mat-form-field>  
+        </div>      
+    <button type="button" mat-raised-button color="warn" (click)="dialogRef.close()">Cancel</button>   
+    <button type="submit" mat-raised-button color="primary" [disabled]="contactFrm.invalid">{{data.modalBtnTitle}}</button>  
+  </div> 
+  </form>  
