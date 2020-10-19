@@ -25,10 +25,7 @@ export class ContactformComponent implements OnInit {
   // modalBtnTitle: string;
   listFilter: string;
   selectedOption: string;
-  // contact: IContact;
-  genders = [];
-  technologies = [];
-
+  
   constructor(@Inject(MAT_DIALOG_DATA) public data: any,
     private fb: FormBuilder,
     private _contactService: ContactService,
